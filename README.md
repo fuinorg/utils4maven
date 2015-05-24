@@ -1,7 +1,7 @@
 # utils4maven
 Utilities for Maven development
 
-The library does not contain much content at the moment - Except:
+The library does not contain much content yet - Except:
 
 | Content | Description |
 | ------------- | ----------- |
