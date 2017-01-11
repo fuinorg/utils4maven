@@ -20,6 +20,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.maven.model.Model;
@@ -37,7 +38,7 @@ public class MavenPomReaderTest {
 
         // PREPARE
         final String expected = IOUtils.toString(getClass()
-                .getResourceAsStream("/objects4j.xml"));
+                .getResourceAsStream("/objects4j.xml"), Charset.forName("ISO-8859-1"));
 
         // TEST
         final Model model = MavenPomReader

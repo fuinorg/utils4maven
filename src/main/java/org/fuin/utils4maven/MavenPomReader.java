@@ -1,5 +1,6 @@
 /**
- * Copyright (C) 2015 Michael Schnell. All rights reserved. <http://www.fuin.org/>
+ * Copyright (C) 2015 Michael Schnell. All rights reserved. 
+ * http://www.fuin.org/
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,7 +13,7 @@
  * details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library. If not, see <http://www.gnu.org/licenses/>.
+ * along with this library. If not, see http://www.gnu.org/licenses/.
  */
 package org.fuin.utils4maven;
 
@@ -20,6 +21,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -134,16 +136,14 @@ public final class MavenPomReader {
     }
 
     private static File replaceVars(final File pomXmlFile, final Model model) {
-        final Map<String, Object> vars = new HashMap<String, Object>();
+        final Map<String, Object> vars = new HashMap<>();
         vars.put("project", model);
         addAllModelProperties(vars, model);
         try {
-            final String pomXml = FileUtils.readFileToString(pomXmlFile,
-                    "ISO-8859-1");
+            final String pomXml = FileUtils.readFileToString(pomXmlFile, "ISO-8859-1");
             final String replacedPomXml = Utils4J.replaceVars(pomXml, vars);
-            final File targetFile = new File(Utils4J.getTempDir(),
-                    "tmp-pom.xml");
-            FileUtils.write(targetFile, replacedPomXml);
+            final File targetFile = new File(Utils4J.getTempDir(), "tmp-pom.xml");
+            FileUtils.write(targetFile, replacedPomXml, Charset.forName("ISO-8859-1"));
             return targetFile;
         } catch (final IOException ex) {
             throw new RuntimeException(ex);
@@ -163,7 +163,7 @@ public final class MavenPomReader {
         final Enumeration<Object> enu = model.getProperties().keys();
         while (enu.hasMoreElements()) {
             final String key = "" + enu.nextElement();
-            vars.put(key, model.getProperties().get(key));
+            vars.put(key, "" + model.getProperties().get(key));
         }
     }
 
