@@ -136,9 +136,7 @@ public final class MavenPomReader {
     }
 
     private static File replaceVars(final File pomXmlFile, final Model model) {
-        final Map<String, Object> vars = new HashMap<>();
-        vars.put("project", model);
-        addAllModelProperties(vars, model);
+        final Map<String, String> vars = createVarMap(model);
         try {
             final String pomXml = FileUtils.readFileToString(pomXmlFile, "ISO-8859-1");
             final String replacedPomXml = Utils4J.replaceVars(pomXml, vars);
@@ -149,6 +147,20 @@ public final class MavenPomReader {
             throw new RuntimeException(ex);
         }
     }
+    
+    /**
+     * Creates a map with all model properties.
+     * 
+     * @param model
+     *            Model to add properties from.
+     *            
+     * @return New map with key/values from the model.
+     */
+    public static Map<String, String> createVarMap(final Model model) {
+        final Map<String, String> vars = new HashMap<>();
+        addAllModelProperties(vars, model);
+        return vars;
+    }
 
     /**
      * Adds all model properties to the map.
@@ -158,7 +170,7 @@ public final class MavenPomReader {
      * @param model
      *            Model to add properties from.
      */
-    public static void addAllModelProperties(final Map<String, Object> vars,
+    public static void addAllModelProperties(final Map<String, String> vars,
             final Model model) {
         final Enumeration<Object> enu = model.getProperties().keys();
         while (enu.hasMoreElements()) {
@@ -183,7 +195,7 @@ public final class MavenPomReader {
                                     + model.getVersion() + "'");
                 }
                 dependency.setVersion(Utils4J.replaceVars(version,
-                        model.getProperties()));
+                        createVarMap(model)));
             }
         }
     }

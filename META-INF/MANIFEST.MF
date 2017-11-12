@@ -5,11 +5,10 @@ Bundle-License: http://www.fsf.org/licensing/licenses/lgpl.html
 Bundle-ManifestVersion: 2
 Bundle-Name: utils4maven
 Bundle-SymbolicName: org.fuin.utils4maven
-Bundle-Vendor: Future Invent Informationsmanagement GmbH, Hamburg (Germa
- ny)
+Bundle-Vendor: fuin.org (Germany)
 Bundle-Version: 0.1.0.SNAPSHOT
 Export-Package: org.fuin.utils4maven;uses:="org.apache.maven.model";vers
- ion="0.1.0.SNAPSHOT"
+ ion="0.1.0"
 Import-Package: org.apache.commons.io;version="[1.4,2)",org.apache.maven
  .model,org.apache.maven.model.io.xpp3,org.apache.maven.model.merge,org.
  apache.maven.plugin.logging,org.codehaus.plexus.util.xml.pull,org.fuin.
@@ -17,3 +16,4 @@ Import-Package: org.apache.commons.io;version="[1.4,2)",org.apache.maven
  hrinkwrap.resolver.api.maven,org.slf4j;version="[1.7,2)",org.slf4j.help
  ers;version="[1.7,2)",org.slf4j.spi;version="[1.7,2)"
 Include-Resource: .gitkeep=src/main/resources/.gitkeep
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
