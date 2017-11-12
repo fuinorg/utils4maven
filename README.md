@@ -8,7 +8,7 @@ The library does not contain much content yet - Except:
 | [MavenPomReader](https://github.com/fuinorg/utils4maven/blob/master/src/main/java/org/fuin/utils4maven/MavenPomReader.java) | Loads the Maven POMs for an artifact and merges the content with all parent POMs. See [Example](https://github.com/fuinorg/utils4maven/blob/master/src/test/java/org/fuin/utils4maven/MavenPomReaderTest.java).|
 | [MavenLogger*](https://github.com/fuinorg/utils4maven/tree/master/src/main/java/org/slf4j/impl) | Implementation of [org.slf4j.Logger](http://www.slf4j.org/api/org/slf4j/Logger.html) transforming SLF4J messages to Maven log messages. Credits: Yegor Bugayenko |
 
-###Snapshots
+### Snapshots
 
 Snapshots can be found on the [OSS Sonatype Snapshots Repository](http://oss.sonatype.org/content/repositories/snapshots/org/fuin "Snapshot Repository"). 
 
